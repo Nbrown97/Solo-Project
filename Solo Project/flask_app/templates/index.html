@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/index.css') }}">
+    <title>Sign Up or Login</title>
+    <style>
+        body {
+            background-image: url("/static/imgs/sun");
+            background-size: cover;
+        }
+    </style>
+    <header class="header">
+        <div>
+            <img class="logo" src="{{ url_for('static', filename='/imgs/logo-transparent-png.png') }}" alt="logo">
+        </div>
+        <div>
+            <a href="/login"><button class="btn" style="padding: 5px 10px; border: solid black; margin-right: 20px; margin-left: 10px;">Login</button></a>
+        </div>
+    </header>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <img src="{{ url_for('static', filename='/imgs/baby1') }}" alt="product_image" style="border-radius: 10px; border: 3px solid; border-color: black; margin-right: 10px; margin-bottom: 10px;" height="200px" width="300px">
+                <img src="{{ url_for('static', filename='/imgs/baby2') }}" alt="product_image" style="border-radius: 10px; border: 3px solid; border-color: black; margin-right: 10px; margin-bottom: 10px;" height="200px" width="300px">
+                <img src="{{ url_for('static', filename='/imgs/baby 3') }}" alt="product_image" style="border-radius: 10px; border: 3px solid; border-color: black; margin-right: 10px;" height="200px" width="300px">
+            </div>
+            <div class="column" id="login">
+                <form action="/register" method="post">
+                    <h2 style="text-align: center; margin-bottom: 25px; margin-top: 25px; font-family: Arial, Helvetica, sans-serif;">To Begin Your Registry, Sign Up Below!</h2>
+                    {% with messages = get_flashed_messages(category_filter=['registration']) %}
+                        {% if messages %}
+                        <div class="alert" role="alert">
+                            {% for message in messages %}
+                            <p>{{message}}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endwith %}
+                    <div>
+                        <input type="text" style="width: 250px; margin-left: 10px; margin-right: 10px; height: 35px;" name="first_name" placeholder="Your First Name">
+                        <input type="text" style="width: 250px; margin-bottom: 25px; height: 35px;" name="last_name" placeholder="Your Last Name">
+                    </div>
+                    <div>
+                        <input type="text" style="width: 518px; margin-left: 10px; margin-bottom: 25px; height: 35px;" name="email" placeholder="Your Email Address">
+                    </div>
+                    <div>
+                        <input type="text" style="width: 518px; margin-left: 10px; margin-bottom: 25px; height: 35px;" name="password" placeholder="Choose a Password">
+                    </div>
+                    <div>
+                        <label for=""><h3 style="margin-left: 50px; font-family: Arial, Helvetica, sans-serif;">Due Date:</h3></label>
+                    </div>
+                    <div class="register">
+                        <input type="date"
+                        name="date_due"
+                        style="margin-left: 50px;"
+                        placeholder=""
+                        min="2023-01-01" max="2023-12-15">
+                        <button class="btn" style="justify-content: center; margin-left: 275px; padding: 5px 10px; border: solid black;">Register</button>
+                    </div>
+                </form>
+                    <div>
+                        <p class="hr-index">OR</p>
+                    </div>
+                    <div class="login-link">
+                        <a href="/login" style="margin-left: 255px;">Login</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

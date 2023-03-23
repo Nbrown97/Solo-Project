@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    align-items: center;
+    text-align: center;
+}
+
+.head {
+    display: flex;
+}
+
+.logo {
+    height: 150px;
+    width: 150px;
+    margin-left: 75px;
+}
+
+.btn{
+    display: block;
+    margin-left: 68%;
+}
+
+.btn1 {
+    display: flex;
+    margin-top: 20px;
+    margin-right: 100px;
+}
+
+.picture {
+    margin-left: 525px;
+}
+
+.link{
+    margin-left: 660px;
+    margin-top: 100px;
+    display: flex;
+}
+
+.name-price {
+    display: flex;
+    margin-left: 555px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.info {
+    text-align: center;
+}
+
+.info1 {
+    margin-left: 25px;
+}
+
+.verticalLine {
+    border-left: 4px solid #000000;
+    height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

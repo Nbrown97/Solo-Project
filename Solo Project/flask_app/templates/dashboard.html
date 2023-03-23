@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/dashboard.css') }}">
+    <title>Dashboard</title>
+    <style>
+        body {
+            background-image: url("/static/imgs/sun");
+            background-size: cover;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div>
+                <img src="{{ url_for('static', filename='/imgs/logo-transparent-png.png') }}" alt="logo" class="logo">
+            </div>
+            <div>
+                <a href="/logout"><button class="btn" style="padding: 5px 10px; border: solid black; margin-right: 20px; margin-left: 10px;">Logout</button></a>
+            </div>
+        </header>
+        <h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Welcome, {{ user.first_name }}!</h1>
+        <h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Your Due Date is {{ user.date_due.strftime("%B %e %Y") }}</h1>
+        <div class="dashbox">
+            <div>
+                <fieldset style="width: 50%; height: 500px; align-items: center; margin-left: 25%; overflow-y:scroll; background-color: rgb(236, 241, 243);">
+                    <legend>My List</legend>
+                    <div>
+                        <a href="/new_item" style="margin-left: 88%;">+ Add Item</a>
+                    </div>
+                    {% for item in items %}
+                        {% if item.user_id == session['user_id'] %}
+                            <div class="contents-container">
+                                <img src="/static/imgs/{{item.image_upload}}" alt="item_image" style="height: 150px; width: 150px; margin-left: 15px;">
+                                <div class="contents">
+                                    <h2 style="margin-bottom: 5px; word-break:normal; font-family: Arial, Helvetica, sans-serif;">{{ item.name }}</h2>
+                                    <h3 style="margin-bottom: 5px; font-family: Arial, Helvetica, sans-serif;">${{ item.price }}</h3>
+                                    <p style="font-family: Arial, Helvetica, sans-serif;">Quantity: {{ item.num_of }}</p>
+                                </div>
+                                <div class="verticalLine">
+                                </div>
+                                <div>
+                                    <p style="text-align: center; inline-size: auto; margin-left: 10px; word-break:break-all; font-family: Arial, Helvetica, sans-serif;">{{ item.description }}</p>
+                                </div>
+                            </div>
+                            <div style="text-align: center;">
+                                <a href="/view_item/{{ item.id }}">View</a>
+                                <a href="/delete/{{item.id}}">Delete</a>
+                            </div>
+                            <hr style="margin-top: 5px;">
+                        {% endif %}
+                    {% endfor %}
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

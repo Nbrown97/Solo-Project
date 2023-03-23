@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: auto;
+    margin: 0;
+    padding: 0;
+    float: none;
+}
+
+.contents-container{
+    display: flex;
+    margin-top: 10px;
+}
+
+.container{
+    margin-left: 0;
+    align-items: center;
+}
+
+.contents {
+display:block;
+margin-top: 35px;
+margin-left: 10px;
+}
+
+.verticalLine {
+    border-left: 4px solid #000000;
+    height: 150px;
+    margin-left: 20px;
+    
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 150px;
+    width: 150px;
+    margin-left: 75px;
+}
+
+.dashbox{
+    margin: 0 auto;
+}
+
+.btn{
+    padding: 5px;
+}

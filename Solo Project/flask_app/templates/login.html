@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/login.css') }}">
+    <title>Login</title>
+    <style>
+        body {
+            background-image: url("/static/imgs/sun");
+            background-size: cover;
+        }
+    </style>
+    <header class="header">
+        <div>
+            <img class="logo" src="{{ url_for('static', filename='/imgs/logo-transparent-png.png') }}" alt="logo">
+        </div>
+    </header>
+</head>
+<body>
+    <div class="container">
+        <form action="/login/user" method="post">
+            <div class="contents" style="width: 550px;
+            height: 300px;
+            background-color: rgb(236, 241, 243);
+            border-radius: 10px;
+            border: solid black 3px;">
+                <h2 class="h2">Welcome Back!</h2>
+                <h2 class="h2">Please Login Using Your Email And Password</h2>
+                {% with messages = get_flashed_messages(category_filter=['login']) %}
+                    {% if messages %}
+                    <div class="alert" role="alert">
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+                <input type="text" style="width: 50%; margin-left: 25%; height: 25px; margin-bottom: 20px;" name="email" placeholder="Enter Your Email">
+                <div>
+                    <input type="password" style="width: 50%; margin-left: 25%; height: 25px; margin-bottom: 30px;" name="password" placeholder="Enter Your Password">
+                </div>
+                <div>
+                    <input type="submit" value="Login" style="padding: 5px 10px; border: solid black; margin-left: 245px;">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

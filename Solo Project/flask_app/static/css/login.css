@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-left: 30%;
+    margin-top: 150px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 150px;
+    width: 150px;
+    margin-left: 75px;
+}
+
+.h2 {
+    text-align: center; 
+    margin-top: 20px; 
+    margin-bottom: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+

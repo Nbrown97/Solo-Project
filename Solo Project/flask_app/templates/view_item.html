@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/view_item.css') }}">
+    <title>View Item</title>
+    <style>
+        body {
+            background-image: url("/static/imgs/sun");
+            background-size: cover;
+        }
+    </style>
+    <header class="header">
+        <div class="head">
+            <img class="logo" src="{{ url_for('static', filename='/imgs/logo-transparent-png.png') }}" alt="logo">
+            <div class="btn">
+                <h3 style="margin-left: 10%; margin-top: 30px;">Welcome, {{ user.first_name }}</h3>
+                <div class="btn1">
+                    <a href="/dashboard"><button class="btn" style="padding: 5px 10px; border: solid black; margin-right: 20px; margin-left: 10px;">Dashboard</button></a>
+                    <a href="/logout"><button class="btn" style="margin-right: 10px; padding: 5px 10px; border: solid black; margin-left: 0;" >Logout</button></a>
+                </div>
+            </div>
+        </div>
+    </header>
+</head>
+<body>
+    <div class="picture">
+        <img src="/static/imgs/{{item.image_upload}}" alt="item_image" style="height: 300px; width: 350px; margin-left: 50px;">
+    </div>
+    <div class="container">
+        <div class="info">
+            <div class="name-price">
+                <h1>{{ item.name }}</h2>
+                    <div class="verticalLine">
+                    </div>
+                <h1>${{ item.price }}</h1>
+            </div>
+            <div class="contents">
+                <h2 style="margin-left: 50px; text-align: center;">"{{ item.description }}"</h2>
+            </div>
+        </div>
+        <div class="link">
+        <a href="/edit_item/{{ item.id }}"><button class="btn" style="padding: 5px 10px; border: solid black; margin-right: 20px; margin-left: 10px;">Edit</button></a>
+        <a href="/delete/{{item.id}}"><button class="btn" style="padding: 5px 10px; border: solid black; margin-right: 20px; margin-left: 10px;">Delete</button></a>
+        </div>
+</body>
+</html>

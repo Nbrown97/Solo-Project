@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/edit_item.css') }}">
+    <title>Edit Item</title>
+    <style>
+        body {
+            background-image: url("/static/imgs/sun");
+            background-size: cover;
+        }
+    </style>
+    <header class="header">
+        <div class="head">
+            <img class="logo" src="{{ url_for('static', filename='/imgs/logo-transparent-png.png') }}" alt="logo">
+            <div class="btn">
+                <h3 style="margin-left: 10%; margin-top: 30px;">Welcome, {{ user.first_name }}</h3>
+                <div class="btn1">
+                    <a href="/dashboard"><button class="btn" style="padding: 5px 10px; border: solid black; margin-right: 20px; margin-left: 10px;">Dashboard</button></a>
+                    <a href="/logout"><button class="btn" style="margin-right: 10px; padding: 5px 10px; border: solid black; margin-left: 0;" >Logout</button></a>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+</head>
+<body>
+    <div class="container">
+        <form action="/edit_item/{{item.id}}/submit" method="post" enctype="multipart/form-data">
+            <div>
+                {% with messages = get_flashed_messages(category_filter=['item']) %}
+                    {% if messages %}
+                        <div class="alert" role="alert">
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="contents" style="width: 600px;
+                height: 350px;
+                background-color: rgb(236, 241, 243);
+                border-radius: 10px;
+                border: solid black 3px;">
+                    <div class="info">
+                        <label for="name" class="info1">Item Name:</label>
+                        <input type="text" value="{{ item.name }}" name="name" class="info2" style="margin-left: 77px;">
+                    </div>
+                    <div class="info">
+                        <label for="price" class="info1">Price: $</label>
+                        <input type="number" value="{{ item.price }}" style="margin-left: 111px; width: 100px;" name="price" class="info2">
+                    </div>
+                    <div class="info">
+                        <label for="description" class="info1" style="justify-content: flex-start; word-break:break-all;">Description:</label>
+                        <input type="text" name="description" value="{{ item.description }}" id="description" style="margin-left: 75px; width: 300px; height: 75px; vertical-align: top; text-align: start;"></textarea>
+                    </div>
+                    <div>
+                        <label for="image_upload" class="info1">Re-select Image:</label>
+                        <input type="file" id="image_upload" value="{{ item.image_upload }}" name="image_upload" style="margin-left: 40px;"><br>
+                    </div>
+                    <div class="info">
+                        <label for="num_of" class="info1">Quantity:</label>
+                        <input type="number" value="{{item.num_of}}" name="num_of" style="margin-left: 100px; width: 50px;" class="info2">
+                    </div>
+                    <div>
+                        <input type="submit" style="padding: 5px 10px; border: solid black; margin-left: 255px" value="Update Item">
+                    </div>
+            </div>
+        </form>
+    </div>

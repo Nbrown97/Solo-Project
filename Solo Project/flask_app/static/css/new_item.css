@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-left: 30%;
+    margin-top: 150px;
+}
+
+.head {
+    display: flex;
+}
+
+.logo {
+    height: 150px;
+    width: 150px;
+    margin-left: 75px;
+}
+
+.info {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-top: 22px;
+}
+
+.info1 {
+    margin-left: 75px;
+    font-size: 20px;
+}
+
+.info2{
+    margin-left: 75px;
+    height: 20px;
+    width: 250px;
+}
+
+.btn{
+    display: block;
+    margin-left: 65%;
+}
+
+.btn1 {
+    display: flex;
+    margin-top: 20px;
+    margin-right: 100px;
+}
